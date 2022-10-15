@@ -1,0 +1,28 @@
+___________
+Inheritance
+___________
+
+_Inheritance means that a subclass has the same contract (methods, fields
+etc...) as the superclass, but
+  _might do some things differently, and
+  _might declare additional methods and fields.
+
+_C++ supports inheritance between classes
+  _This allows subclasses to change the behaviour of the superclasses.
+  _C++ supports multiple inheritance: for example a subclass can inherit from 2
+  superclasses and access all protected member variables in both classes.
+  _Multiple inheritance can cause subtle bugs and issues: avoid it if you can.
+
+_To declare a subclass (Foo) class which extends the superclass (Bar) we write:
+
+________________________________________________________________________________
+class Bar
+{
+  //Parent Class
+};
+
+class Foo : public Bar
+{
+  //Child Class
+};
+________________________________________________________________________________

@@ -11,7 +11,7 @@ Money::Money(int e, int c)      //Classic-constructor
 }
 */
 
-Money::Money(int e, int c):
+Money::Money(int e, int c):     //Constructor-initialization lists
     euros(e), cents(c)
 {}
 
