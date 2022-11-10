@@ -29,7 +29,7 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
             /***************************************     LARGEST_SIZE    ***************************************/
 
             else if (label->text() == kNavTabs ) // headers go at the top
-                label->setGeometry(0+r.x(), 0+r.y(),r.width(), 40);
+                label->setGeometry(r.x(), r.y(),r.width(), 40);
 
             else if (label->text() == kHomeLink)
                 label->setGeometry(5 + r.x(), 5 + r.y(), 60, 30);
@@ -51,13 +51,16 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
             /******************************************    MAIN BODY   ******************************************/
 
             else if (label->text() == kAdvert)
-                label->setGeometry(r.width() - 135 + r.x(), r.y() + 55, 120, 650);
+                label->setGeometry(r.width() - 135 + r.x(), r.y() + 45, 120, r.height() - 70);
+
+            else if (label->text() == kSearchOptions)
+                label->setGeometry(r.width() - 367 + r.x(), r.y() + 45, 230, r.height() - 500);
 
             else if (label->text() == kSearchBackward)
-                label->setGeometry(r.x() + 300, 650 + r.y(), 30, 30);
+                label->setGeometry(r.width() + 300 + r.x(), r.height() - 200 + r.y(), 30, 30);
 
             else if (label->text() == kSearchForward)
-                label->setGeometry(r.x() + 800, 650 + r.y(), 30, 30);
+                label->setGeometry(r.width() + 800 + r.x(), r.height() - 200 + r.y(), 30, 30);
 
             /**************************************     END_OF_MAIN_BODY    *************************************/
 

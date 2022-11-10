@@ -32,6 +32,7 @@ void ResponsiveWindow::createWidgets() {
     rl->addWidget(new ResponsiveLabel(kAdvert));
     rl->addWidget(new ResponsiveLabel(kSearchForward));
     rl->addWidget(new ResponsiveLabel(kSearchBackward));
+    rl->addWidget(new ResponsiveLabel(kSearchOptions));
 
     // we might have more than one search results
     rl->addWidget(new ResponsiveLabel(kSearchResult));
