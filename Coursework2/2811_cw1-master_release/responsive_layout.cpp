@@ -24,17 +24,53 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
 
             if (label == NULL) // null: cast failed on pointer
                 std::cout << "warning, unknown widget class in layout" << std::endl;
-            else if (label -> text() == kNavTabs ) // headers go at the top
-                label -> setGeometry(0+r.x(),0+r.y(),r.width(), 40);
-            // only show a search button on small resolution, at the right of the window
-            else if (label -> text() == kSearchButton && r.width() < 500)
-                label -> setGeometry(r.width() - 65+r.x(),45+r.y(),60, 40);
+            
+            /**************************************     NAV_BAR_ITEMS     **************************************/
+            /***************************************     LARGEST_SIZE    ***************************************/
+
+            else if (label->text() == kNavTabs ) // headers go at the top
+                label->setGeometry(0+r.x(), 0+r.y(),r.width(), 40);
+
+            else if (label->text() == kHomeLink)
+                label->setGeometry(5 + r.x(), 5 + r.y(), 60, 30);
+
+            else if (label->text() == kSearchText)
+                label->setGeometry(r.width() - 367 + r.x(), r.y() + 5, 180, 30);
+
+            else if (label->text() == kSearchButton)
+                label->setGeometry(r.width() - 185 + r.x(), r.y() + 5, 45, 30);
+
+            //sign-in button at the right of the search button
+            else if (label->text() == kSignIn)
+                label->setGeometry(r.width() - 135 + r.x(), r.y() + 5, 60, 30);
+
+            //ShoppingBasket at the right top of the navigation bar
+            else if (label->text() == kShoppingBasket)
+                label->setGeometry(r.width() - 70 + r.x(), r.y() + 5, 60, 30);
+
+            /******************************************    MAIN BODY   ******************************************/
+
+            else if (label->text() == kAdvert)
+                label->setGeometry(r.width() - 135 + r.x(), r.y() + 55, 120, 650);
+
+            else if (label->text() == kSearchBackward)
+                label->setGeometry(r.x() + 300, 650 + r.y(), 30, 30);
+
+            else if (label->text() == kSearchForward)
+                label->setGeometry(r.x() + 800, 650 + r.y(), 30, 30);
+
+            /**************************************     END_OF_MAIN_BODY    *************************************/
+
+
+            /************************************    END_OF_LARGEST_SIZE    *************************************/
+            /***********************************     END_OF_NAV_BAR_ITEMS     ***********************************/
+
             // fixme: focus group did not like this behaviour for the search result element.
-            else if (label -> text() == kSearchResult )
-                label -> setGeometry( rand() %(r.width()-120)+r.x(),
-                                     rand() %(r.height()-100)+40+r.y(), 60, 60);
+            else if (label->text() == kSearchResult )
+                label->setGeometry(rand() %(r.width()-120)+r.x(),rand() %(r.height()-100)+40+r.y(), 60, 60);
+
             else // otherwise: disappear label by moving out of bounds
-                label -> setGeometry (-1,-1,0,0);
+                label->setGeometry(-1, -1, 0, 0);
 
         }
         catch (std::bad_cast) {

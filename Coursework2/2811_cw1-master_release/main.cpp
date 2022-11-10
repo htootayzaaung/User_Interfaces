@@ -29,7 +29,7 @@ void mkdir_ ( std::string sPath) {  // https://stackoverflow.com/a/35109823/7088
     #if defined(_WIN32)
       nError = _mkdir(sPath.c_str()); // can be used on Windows
     #else
-      nError = mkdir(sPath.c_str(), S_IRWXU); // can be used on non-Windows
+      //nError = mkdir(sPath.c_str(), S_IRWXU); // can be used on non-Windows
     #endif
     if (nError != 0) {
       std::cout << "error creating directory "<< sPath <<". quitting.";

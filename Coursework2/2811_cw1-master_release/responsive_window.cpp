@@ -25,6 +25,14 @@ void ResponsiveWindow::createWidgets() {
     // add all the widgets we need to demonstrate all layouts
     rl->addWidget(new ResponsiveLabel(kNavTabs));
     rl->addWidget(new ResponsiveLabel(kSearchButton));
+    rl->addWidget(new ResponsiveLabel(kShoppingBasket));
+    rl->addWidget(new ResponsiveLabel(kHomeLink));
+    rl->addWidget(new ResponsiveLabel(kSignIn));
+    rl->addWidget(new ResponsiveLabel(kSearchText));
+    rl->addWidget(new ResponsiveLabel(kAdvert));
+    rl->addWidget(new ResponsiveLabel(kSearchForward));
+    rl->addWidget(new ResponsiveLabel(kSearchBackward));
+
     // we might have more than one search results
     rl->addWidget(new ResponsiveLabel(kSearchResult));
     rl->addWidget(new ResponsiveLabel(kSearchResult));
