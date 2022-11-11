@@ -24,53 +24,149 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
 
             if (label == NULL) // null: cast failed on pointer
                 std::cout << "warning, unknown widget class in layout" << std::endl;
-            
-            /**************************************     NAV_BAR_ITEMS     **************************************/
-            /***************************************     LARGEST_SIZE    ***************************************/
+
+            /*DEFAULT*/
 
             else if (label->text() == kNavTabs ) // headers go at the top
-                label->setGeometry(r.x(), r.y(),r.width(), 40);
+            {
+                if (r.width() < 500)
+                {
+                    label->setGeometry(r.x(), r.y(), r.width(), 30);
+                }
+                else if (r.width() >= 500)
+                {
+                    label->setGeometry(r.x(), r.y(), r.width(), 40);
+                }
+            }
+
 
             else if (label->text() == kHomeLink)
-                label->setGeometry(5 + r.x(), 5 + r.y(), 60, 30);
+            {
+                if (r.width() < 500)
+                {
+                    label->setGeometry(r.x() + 2, 5 + r.y(), 60, 20);
+                }
+                else if (r.width() >= 500)
+                {
+                    label->setGeometry(r.x() + 2, 5 + r.y(), 60, 30);
+                }
+            }
+
+
+            else if (label->text() == kSignIn)
+            {
+                if (r.width() < 500)
+                {
+                    label->setGeometry(r.width() - 62 + r.x(), r.y() + 5, 60, 20);
+                }
+                else if (r.width() >= 500)
+                {
+                    label->setGeometry(r.width() - 62 + r.x(), r.y() + 5, 60, 30);
+                }
+            }
+
+
+            else if (label->text() == kLanguage && r.width() >= 500)
+            {
+                label->setGeometry(r.width() - 134 + r.x(), r.y() + 5, 70, 30);
+            }
+
+            else if (label->text() == kRegion && r.width() >= 500)
+            {
+                label->setGeometry(r.width() - 187 + r.x(), r.y() + 5, 50, 30);
+            }
 
             else if (label->text() == kSearchText)
-                label->setGeometry(r.width() - 367 + r.x(), r.y() + 5, 180, 30);
+            {
+                if (r.width() < 500)
+                {
+                    label->setGeometry(r.x() + 2, r.y() + 32, r.width() - 115, 20);
+                }
+                else if (r.width() >= 500)
+                {
+                    label->setGeometry(r.x() + 2, r.y() + 42, r.width() - 190, 30);
+                }
+            }
+
 
             else if (label->text() == kSearchButton)
-                label->setGeometry(r.width() - 185 + r.x(), r.y() + 5, 45, 30);
+            {
+                if (r.width() < 500)
+                {
+                    label->setGeometry(r.width() - 110 + r.x(), r.y() + 32, 45, 20);
+                }
+                else if (r.width() >= 500)
+                {
+                    label->setGeometry(r.width() - 185 + r.x(), r.y() + 42, 45, 30);
+                }
+            }
 
-            //sign-in button at the right of the search button
-            else if (label->text() == kSignIn)
-                label->setGeometry(r.width() - 135 + r.x(), r.y() + 5, 60, 30);
 
-            //ShoppingBasket at the right top of the navigation bar
-            else if (label->text() == kShoppingBasket)
-                label->setGeometry(r.width() - 70 + r.x(), r.y() + 5, 60, 30);
+            else if (label->text() == kWishlist)
+            {
+                if (r.width() < 500)
+                {
+                    label->setGeometry(r.width() - 70 + r.x(), r.y() + 55, 68, 15);
+                }
+                else if (r.width() >= 500)
+                {
+                    label->setGeometry(r.width() - 137 + r.x(), r.y() + 42, 73, 30);
+                }
+            }
 
-            /******************************************    MAIN BODY   ******************************************/
-
-            else if (label->text() == kAdvert)
-                label->setGeometry(r.width() - 135 + r.x(), r.y() + 45, 120, r.height() - 70);
 
             else if (label->text() == kSearchOptions)
-                label->setGeometry(r.width() - 367 + r.x(), r.y() + 45, 230, r.height() - 500);
+            {
+                if (r.width() < 500)
+                {
+                    label->setGeometry(r.width() - 70 + r.x(), r.y() + 75, 68, r.height() - 100);   //100
+                }
+                else if (r.width() >= 500)
+                {
+                    label->setGeometry(r.x() + 2, r.y() + 75, 68, r.height() - 100);
+                }
+            }
+
+            else if (label->text() == kShoppingBasket)
+            {
+                if (r.width() < 500)
+                {
+                    label->setGeometry(r.width() - 62 + r.x(), r.y() + 32, 60, 20);
+                }
+                else if (r.width() >= 500)
+                {
+                    label->setGeometry(r.width() - 62 + r.x(), r.y() + 42, 60, 30);
+                }
+            }
 
             else if (label->text() == kSearchBackward)
-                label->setGeometry(r.width() + 300 + r.x(), r.height() - 200 + r.y(), 30, 30);
+            {
+                if (r.width() < 500)
+                {
+                    label->setGeometry(r.width() - 70 + r.x(), r.height() + r.y() - 180 + 160, 30, 15);
+                }
+
+            }
 
             else if (label->text() == kSearchForward)
-                label->setGeometry(r.width() + 800 + r.x(), r.height() - 200 + r.y(), 30, 30);
+            {
+                if (r.width() < 500)
+                {
+                    label->setGeometry(r.width() - 35 + r.x(), r.height() + r.y() - 180 + 160, 30, 15);
+                }
+            }
 
-            /**************************************     END_OF_MAIN_BODY    *************************************/
+            else if (label->text() == kAdvert && r.width() > 500)
+            {
+                label->setGeometry(r.width() - 122 + r.x(), r.y() + 75, 120, r.height() - 100);
+            }
 
-
-            /************************************    END_OF_LARGEST_SIZE    *************************************/
-            /***********************************     END_OF_NAV_BAR_ITEMS     ***********************************/
 
             // fixme: focus group did not like this behaviour for the search result element.
+            /*
             else if (label->text() == kSearchResult )
                 label->setGeometry(rand() %(r.width()-120)+r.x(),rand() %(r.height()-100)+40+r.y(), 60, 60);
+            */
 
             else // otherwise: disappear label by moving out of bounds
                 label->setGeometry(-1, -1, 0, 0);

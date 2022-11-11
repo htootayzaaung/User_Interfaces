@@ -33,6 +33,9 @@ void ResponsiveWindow::createWidgets() {
     rl->addWidget(new ResponsiveLabel(kSearchForward));
     rl->addWidget(new ResponsiveLabel(kSearchBackward));
     rl->addWidget(new ResponsiveLabel(kSearchOptions));
+    rl->addWidget(new ResponsiveLabel(kWishlist));
+    rl->addWidget(new ResponsiveLabel(kRegion));
+    rl->addWidget(new ResponsiveLabel(kLanguage));
 
     // we might have more than one search results
     rl->addWidget(new ResponsiveLabel(kSearchResult));

@@ -313,7 +313,6 @@ DIST          = /Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/features/spec_pre.pr
 		/Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/features/qt_config.prf \
 		/Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/macx-clang/qmake.conf \
 		/Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/features/spec_post.prf \
-		../2811_cw1-master_release/.qmake.stash \
 		/Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/features/exclusive_builds.prf \
 		/Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/features/mac/sdk.prf \
 		/Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/features/toolchain.prf \
@@ -358,7 +357,7 @@ TARGET        = responsive.app/Contents/MacOS/responsive
 EXPORT_QMAKE_MAC_SDK = macosx
 EXPORT_QMAKE_MAC_SDK_VERSION = 12.3
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Applications/Xcode.app/Contents/Developer
-EXPORT__QMAKE_STASH_ = /Users/htootayzaaung/TestingPrograms/C++/User_Interfaces/Coursework2/build-responsive-Qt_6_4_0_for_macOS-Debug/.qmake.stash
+EXPORT__QMAKE_STASH_ = 
 EXPORT_VALID_ARCHS = x86_64 arm64
 EXPORT_DEFAULT_ARCHS = arm64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
@@ -624,7 +623,6 @@ Makefile: ../2811_cw1-master_release/responsive.pro /Users/htootayzaaung/Qt/6.4.
 		/Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/features/qt_config.prf \
 		/Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/macx-clang/qmake.conf \
 		/Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/features/exclusive_builds.prf \
 		/Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/features/mac/sdk.prf \
 		/Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/features/toolchain.prf \
@@ -908,7 +906,6 @@ Makefile: ../2811_cw1-master_release/responsive.pro /Users/htootayzaaung/Qt/6.4.
 /Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/features/qt_config.prf:
 /Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/macx-clang/qmake.conf:
 /Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/features/spec_post.prf:
-.qmake.stash:
 /Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/features/exclusive_builds.prf:
 /Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/features/mac/sdk.prf:
 /Users/htootayzaaung/Qt/6.4.0/macos/mkspecs/features/toolchain.prf:
@@ -981,7 +978,6 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r responsive.app
-	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
