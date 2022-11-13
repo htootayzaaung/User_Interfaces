@@ -13,8 +13,11 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
 
     QLayout::setGeometry(r);
     int result_count = 0;
-    int move_right = r.x() + 5;
-    int move_down = r.y() + 75;
+    int result_count2 = 0;
+    int move_right = r.x() + 6;
+    int move_down = r.y() + 60;
+    int move_right2 = r.x() + 80;
+    int move_down2 = r.y() + 76;
 
     // for all the Widgets added in ResponsiveWindow.cpp
     for (int i = 0; i < list_.size(); i++) {
@@ -42,7 +45,6 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
                 }
             }
 
-
             else if (label->text() == kHomeLink)
             {
                 if (r.width() < 500)
@@ -54,7 +56,6 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
                     label->setGeometry(r.x() + 2, 5 + r.y(), 60, 30);
                 }
             }
-
 
             else if (label->text() == kSignIn)
             {
@@ -70,7 +71,6 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
                 {
                     label->setGeometry(r.width() - 62 + r.x(), r.y() + 42, 60, 30);
                 }
-
             }
 
             else if (label->text() == kMenu)
@@ -113,7 +113,6 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
                 }
             }
 
-
             else if (label->text() == kSearchButton)
             {
                 if (r.width() < 500)
@@ -129,7 +128,6 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
                     label->setGeometry(r.width() - 89 + r.x(), r.y() + 5, 45, 30);
                 }
             }
-
 
             else if (label->text() == kWishlist)
             {
@@ -207,6 +205,88 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
             }
 
 
+            else if (label->text() == kSearchResult && r.width() < 500)
+            {
+                result_count = result_count + 1;
+
+                if (result_count == 1)
+                {
+                    label->setGeometry(r.x() + 6, r.y() + 60, (r.width() * 0.15) + 10 , (r.height() * 0.15) + 35);
+                }
+
+                else if (result_count > 1)
+                {
+                    move_right = move_right + r.width() * 0.15 + 20;
+
+                    if (move_right + r.width() * 0.15 + 10 > r.width() - 70)
+                    {
+                        move_down = move_down + r.height() * 0.15 + 90; //+ 20
+                        move_right = r.x() + 6;
+
+                        if (move_down + r.height() * 0.15 + 10 < r.height() - 50) //-40      //play around this negative "-" value
+                        {
+                            label->setGeometry(move_right, move_down, (r.width() * 0.15) + 10, (r.height() * 0.15) + 35);
+                        }
+                        else
+                        {
+                            label->setGeometry(move_right, move_down, 0, 0);
+                        }
+                    }
+                    else
+                    {
+                        if (move_down + r.height() * 0.15 + 10 > r.height() - 50) //-40
+                        {
+                            label->setGeometry(move_right, move_down, 0, 0);
+                        }
+                        else
+                        {
+                            label->setGeometry(move_right, move_down, (r.width() * 0.15) + 10, (r.height() * 0.15) + 35);
+                        }
+                    }
+                }
+            }
+
+
+            else if (label->text() == kSearchResult && r.width() >= 500)
+            {
+                result_count2 = result_count2 + 1;
+
+                if (result_count2 == 1)
+                {
+                    label->setGeometry(r.x() + 80, r.y() + 76, (r.width() * 0.15) + 10 , (r.height() * 0.15) + 35);
+                }
+
+                else if (result_count2 > 1)
+                {
+                    move_right2 = move_right2 + r.width() * 0.15 + 20;
+
+                    if (move_right2 + r.width() * 0.15 + 10 > r.width() - 130)
+                    {
+                        move_down2 = move_down2 + r.height() * 0.15 + 90; //+ 20
+                        move_right2 = r.x() + 80;
+
+                        if (move_down + r.height() * 0.15 + 10 < r.height() + 110) //-40      //play around this negative "-" value
+                        {
+                            label->setGeometry(move_right2, move_down2, (r.width() * 0.15) + 10, (r.height() * 0.15) + 35);
+                        }
+                        else
+                        {
+                            label->setGeometry(move_right2, move_down2, 0, 0);
+                        }
+                    }
+                    else
+                    {
+                        if (move_down2 + r.height() * 0.15 + 10 > r.height() - 110) //-40
+                        {
+                            label->setGeometry(move_right2, move_down2, 0, 0);
+                        }
+                        else
+                        {
+                            label->setGeometry(move_right2, move_down2, (r.width() * 0.15) + 10, (r.height() * 0.15) + 35);
+                        }
+                    }
+                }
+            }
 
             else // otherwise: disappear label by moving out of bounds
                 label->setGeometry(-1, -1, 0, 0);
