@@ -56,6 +56,8 @@ void ResponsiveWindow::createWidgets() {
     rl->addWidget(new ResponsiveLabel(kSearchResult));
     rl->addWidget(new ResponsiveLabel(kSearchResult));
     rl->addWidget(new ResponsiveLabel(kSearchResult));
+    rl->addWidget(new ResponsiveLabel(kSearchResult));
+    rl->addWidget(new ResponsiveLabel(kSearchResult));
 
     // note that later widgets are drawn on top of earlier widgets
 

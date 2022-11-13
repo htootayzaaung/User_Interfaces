@@ -182,7 +182,7 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
                 }
                 else if (r.width() >= 500)
                 {
-                    label->setGeometry(r.width() - 350 + 45 + r.x(), r.height() - r.y() - 20, 40, 15);
+                    label->setGeometry(r.width() - 123 + r.x(), r.height() - r.y() - 20, 40, 15);
                 }
 
             }
@@ -195,7 +195,7 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
                 }
                 else if (r.width() >= 500)
                 {
-                    label->setGeometry(r.width() - 245 + r.x(), r.height() - r.y() - 20, 40, 15);
+                    label->setGeometry(r.width() - 43 + r.x(), r.height() - r.y() - 20, 40, 15);
                 }
             }
 
@@ -253,37 +253,44 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
 
                 if (result_count2 == 1)
                 {
-                    label->setGeometry(r.x() + 80, r.y() + 76, (r.width() * 0.15) + 10 , (r.height() * 0.15) + 35);
+                    label->setGeometry(r.x() + 80, r.y() + 76, (r.width() * 0.15) + 10 , (r.height() * 0.15) + 35);     //sets the first result //Do not change!
                 }
 
                 else if (result_count2 > 1)
                 {
-                    move_right2 = move_right2 + r.width() * 0.15 + 20;
+                    move_right2 = move_right2 + r.width() * 0.15 + 20;          //moves 10 position to the right //Do not change!
 
-                    if (move_right2 + r.width() * 0.15 + 10 > r.width() - 130)
+                    if (move_right2 + r.width() * 0.15 + 10 > r.width() - 134)  //-120
                     {
-                        move_down2 = move_down2 + r.height() * 0.15 + 90; //+ 20
-                        move_right2 = r.x() + 80;
+                        move_right2 = 0;
+                        move_down2 = move_down2 + r.height() * 0.15 + 108; //+90 Do Not change!
+                        move_right2 = move_right2 + r.x() + 80;   //+80 Do not change
 
-                        if (move_down + r.height() * 0.15 + 10 < r.height() + 110) //-40      //play around this negative "-" value
-                        {
+                        //if (move_down + r.height() * 0.15 + 10 < r.height() + 110) //-40      //play around this negative "-" value
+                        //{
                             label->setGeometry(move_right2, move_down2, (r.width() * 0.15) + 10, (r.height() * 0.15) + 35);
-                        }
-                        else
+                        //}
+                        //else
+                        //{
+                            //label->setGeometry(move_right2, move_down2, 0, 0);
+                        //}
+                        if (move_down2 > r.height() - 20)
                         {
                             label->setGeometry(move_right2, move_down2, 0, 0);
                         }
                     }
-                    else
+                    else if (move_right2 + r.width() * 0.15 + 10 < r.width() - 134) //-120
                     {
-                        if (move_down2 + r.height() * 0.15 + 10 > r.height() - 110) //-40
-                        {
-                            label->setGeometry(move_right2, move_down2, 0, 0);
-                        }
-                        else
-                        {
+                        move_right2 = move_right2 + r.x() + 6;
+
+                        //if (move_down2 + r.height() * 0.15 + 10 > r.height() - 110) //-40
+                        //{
+                            //label->setGeometry(move_right2, move_down2, 0, 0);
+                        //}
+                        //else
+                        //{
                             label->setGeometry(move_right2, move_down2, (r.width() * 0.15) + 10, (r.height() * 0.15) + 35);
-                        }
+                        //}
                     }
                 }
             }
