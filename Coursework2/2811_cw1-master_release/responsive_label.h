@@ -25,11 +25,12 @@ const QString
         kSearchText     = "search query",
         kSearchForward  = ">",
         kSearchBackward = "<",
-        kSearchOptions  = "search options",
+        kSearchOptions  = "search\noptions",
         kWishlist       = "wish-list",
         kLanguage       = "language",
         kRegion         = "region",
-        kHistory        = "history";
+        kHistory        = "history",
+        kMenu           = "menu";
 
 
 
@@ -49,7 +50,8 @@ const std::map<QString, QString> kColours = {
         std::make_pair(kWishlist,       "#cdf5f6"),
         std::make_pair(kRegion,         "#aeb6bf"),
         std::make_pair(kLanguage,       "#a9cce3"),
-        std::make_pair(kHistory,        "#fad7a0")
+        std::make_pair(kHistory,        "#fad7a0"),
+        std::make_pair(kMenu,           "#f75882")
     };
 
 class ResponsiveLabel : public QLabel {

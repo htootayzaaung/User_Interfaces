@@ -12,6 +12,9 @@
 void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fit inside r */ ) {
 
     QLayout::setGeometry(r);
+    int result_count = 0;
+    int move_right = r.x() + 5;
+    int move_down = r.y() + 75;
 
     // for all the Widgets added in ResponsiveWindow.cpp
     for (int i = 0; i < list_.size(); i++) {
@@ -57,24 +60,42 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
             {
                 if (r.width() < 500)
                 {
-                    label->setGeometry(r.width() - 62 + r.x(), r.y() + 5, 60, 20);
+                    label->setGeometry(r.width() - 109 + r.x(), r.y() + 5, 60, 20);
+                }
+                else if (r.width() >= 500 && r.width() < 1024)
+                {
+                    label->setGeometry(r.width() - 104 + r.x(), r.y() + 5, 60, 30);
+                }
+                else if (r.width() >= 1024)
+                {
+                    label->setGeometry(r.width() - 62 + r.x(), r.y() + 42, 60, 30);
+                }
+
+            }
+
+            else if (label->text() == kMenu)
+            {
+                if (r.width() < 500)
+                {
+                    label->setGeometry(r.width() - 47 + r.x(), r.y() + 5, 45, 20);
                 }
                 else if (r.width() >= 500)
                 {
-                    label->setGeometry(r.width() - 62 + r.x(), r.y() + 5, 60, 30);
+                    label->setGeometry(r.width() - 42 + r.x(), r.y() + 5, 40, 30);
                 }
             }
 
-
             else if (label->text() == kLanguage && r.width() >= 500)
             {
-                label->setGeometry(r.width() - 134 + r.x(), r.y() + 5, 70, 30);
+                label->setGeometry(r.x() + 116, r.y() + 5, 70, 30);
             }
+
 
             else if (label->text() == kRegion && r.width() >= 500)
             {
-                label->setGeometry(r.width() - 187 + r.x(), r.y() + 5, 50, 30);
+                label->setGeometry(r.x() + 64, r.y() + 5, 50, 30);
             }
+
 
             else if (label->text() == kSearchText)
             {
@@ -82,9 +103,13 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
                 {
                     label->setGeometry(r.x() + 2, r.y() + 32, r.width() - 115, 20);
                 }
-                else if (r.width() >= 500)
+                else if (r.width() >= 500 && r.width() < 1024)
                 {
                     label->setGeometry(r.x() + 2, r.y() + 42, r.width() - 190, 30);
+                }
+                else if (r.width() >= 1024)
+                {
+                    label->setGeometry(r.x() + 710, r.y() + 5, r.width() - 800, 30);
                 }
             }
 
@@ -95,9 +120,13 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
                 {
                     label->setGeometry(r.width() - 110 + r.x(), r.y() + 32, 45, 20);
                 }
-                else if (r.width() >= 500)
+                else if (r.width() >= 500 && r.width() < 1024)
                 {
                     label->setGeometry(r.width() - 185 + r.x(), r.y() + 42, 45, 30);
+                }
+                else if (r.width() >= 1024)
+                {
+                    label->setGeometry(r.width() - 89 + r.x(), r.y() + 5, 45, 30);
                 }
             }
 
@@ -108,9 +137,13 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
                 {
                     label->setGeometry(r.width() - 70 + r.x(), r.y() + 55, 68, 15);
                 }
-                else if (r.width() >= 500)
+                else if (r.width() >= 500 && r.width() < 1024)
                 {
                     label->setGeometry(r.width() - 137 + r.x(), r.y() + 42, 73, 30);
+                }
+                else if (r.width() >= 1024)
+                {
+                    label->setGeometry(r.width() - 214 + r.x(), r.y() + 42, 73, 30);
                 }
             }
 
@@ -133,9 +166,13 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
                 {
                     label->setGeometry(r.width() - 62 + r.x(), r.y() + 32, 60, 20);
                 }
-                else if (r.width() >= 500)
+                else if (r.width() >= 500 && r.width() < 1024)
                 {
                     label->setGeometry(r.width() - 62 + r.x(), r.y() + 42, 60, 30);
+                }
+                else if (r.width() >= 1024)
+                {
+                    label->setGeometry(r.width() - 138 + r.x(), r.y() + 42, 73, 30);
                 }
             }
 
@@ -143,7 +180,11 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
             {
                 if (r.width() < 500)
                 {
-                    label->setGeometry(r.width() - 70 + r.x(), r.height() + r.y() - 180 + 160, 30, 15);
+                    label->setGeometry(r.width() - 70 + r.x(), r.height() + r.y() - 20, 30, 15);
+                }
+                else if (r.width() >= 500)
+                {
+                    label->setGeometry(r.width() - 350 + 45 + r.x(), r.height() - r.y() - 20, 40, 15);
                 }
 
             }
@@ -152,7 +193,11 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
             {
                 if (r.width() < 500)
                 {
-                    label->setGeometry(r.width() - 35 + r.x(), r.height() + r.y() - 180 + 160, 30, 15);
+                    label->setGeometry(r.width() - 35 + r.x(), r.height() + r.y() - 20, 30, 15);
+                }
+                else if (r.width() >= 500)
+                {
+                    label->setGeometry(r.width() - 245 + r.x(), r.height() - r.y() - 20, 40, 15);
                 }
             }
 
@@ -162,11 +207,6 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
             }
 
 
-            // fixme: focus group did not like this behaviour for the search result element.
-            /*
-            else if (label->text() == kSearchResult )
-                label->setGeometry(rand() %(r.width()-120)+r.x(),rand() %(r.height()-100)+40+r.y(), 60, 60);
-            */
 
             else // otherwise: disappear label by moving out of bounds
                 label->setGeometry(-1, -1, 0, 0);

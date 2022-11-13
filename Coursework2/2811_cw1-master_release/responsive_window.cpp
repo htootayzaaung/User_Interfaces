@@ -36,10 +36,23 @@ void ResponsiveWindow::createWidgets() {
     rl->addWidget(new ResponsiveLabel(kWishlist));
     rl->addWidget(new ResponsiveLabel(kRegion));
     rl->addWidget(new ResponsiveLabel(kLanguage));
+    rl->addWidget(new ResponsiveLabel(kMenu));
 
     // we might have more than one search results
     rl->addWidget(new ResponsiveLabel(kSearchResult));
     rl->addWidget(new ResponsiveLabel(kSearchResult));
+    rl->addWidget(new ResponsiveLabel(kSearchResult));
+    rl->addWidget(new ResponsiveLabel(kSearchResult));
+    rl->addWidget(new ResponsiveLabel(kSearchResult));
+    rl->addWidget(new ResponsiveLabel(kSearchResult));
+    rl->addWidget(new ResponsiveLabel(kSearchResult));
+    rl->addWidget(new ResponsiveLabel(kSearchResult));
+    rl->addWidget(new ResponsiveLabel(kSearchResult));
+    rl->addWidget(new ResponsiveLabel(kSearchResult));
+    rl->addWidget(new ResponsiveLabel(kSearchResult));
+    rl->addWidget(new ResponsiveLabel(kSearchResult));
+
+
     // note that later widgets are drawn on top of earlier widgets
 
     setLayout(rl);
