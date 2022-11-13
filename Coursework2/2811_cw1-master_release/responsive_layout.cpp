@@ -260,7 +260,7 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
                 {
                     move_right2 = move_right2 + r.width() * 0.15 + 20;          //moves 10 position to the right //Do not change!
 
-                    if (move_right2 + r.width() * 0.15 + 10 > r.width() - 134)  //-120
+                    if (move_right2 + r.width() * 0.15 + 10 > r.width() - 132)  //-120
                     {
                         move_right2 = 0;
                         move_down2 = move_down2 + r.height() * 0.15 + 108; //+90 Do Not change!
@@ -279,7 +279,7 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
                             label->setGeometry(move_right2, move_down2, 0, 0);
                         }
                     }
-                    else if (move_right2 + r.width() * 0.15 + 10 < r.width() - 134) //-120
+                    else if (move_right2 + r.width() * 0.15 + 10 < r.width() - 132) //-120
                     {
                         move_right2 = move_right2 + r.x() + 6;
 
