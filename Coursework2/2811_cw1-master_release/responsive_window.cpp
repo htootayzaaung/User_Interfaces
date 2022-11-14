@@ -39,6 +39,26 @@ void ResponsiveWindow::createWidgets() {
     rl->addWidget(new ResponsiveLabel(kMenu));
 
     // we might have more than one search results
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+    rl->addWidget(new ResponsiveLabel(kResultText));
+
+    rl->addWidget(new ResponsiveLabel(kSearchResult));
     rl->addWidget(new ResponsiveLabel(kSearchResult));
     rl->addWidget(new ResponsiveLabel(kSearchResult));
     rl->addWidget(new ResponsiveLabel(kSearchResult));
@@ -57,24 +77,6 @@ void ResponsiveWindow::createWidgets() {
     rl->addWidget(new ResponsiveLabel(kSearchResult));
     rl->addWidget(new ResponsiveLabel(kSearchResult));
 
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
-    rl->addWidget(new ResponsiveLabel(kSearchText));
 
     // note that later widgets are drawn on top of earlier widgets
 
