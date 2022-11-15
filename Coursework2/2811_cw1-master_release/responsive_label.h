@@ -22,7 +22,7 @@ const QString
         kAdvert         = "advert",
         kSearchButton   = "search",
         kSearchResult   = "result",
-        kResultText     = "text",
+        kResultText     = "description",
         kSearchText     = "search query",
         kSearchForward  = ">",
         kSearchBackward = "<",

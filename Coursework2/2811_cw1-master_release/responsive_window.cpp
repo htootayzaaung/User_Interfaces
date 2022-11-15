@@ -7,6 +7,7 @@
 #include "screenshot.h"
 #include <iostream>
 #include <QApplication>
+#include <QScrollArea>
 
 
 ResponsiveWindow::ResponsiveWindow() {
@@ -21,6 +22,7 @@ ResponsiveWindow::ResponsiveWindow() {
 void ResponsiveWindow::createWidgets() {
 
     ResponsiveLayout * rl = new ResponsiveLayout();
+    ResponsiveLayout *rl2 = new ResponsiveLayout();
 
     // add all the widgets we need to demonstrate all layouts
     rl->addWidget(new ResponsiveLabel(kNavTabs));
@@ -76,11 +78,15 @@ void ResponsiveWindow::createWidgets() {
     rl->addWidget(new ResponsiveLabel(kSearchResult));
     rl->addWidget(new ResponsiveLabel(kSearchResult));
     rl->addWidget(new ResponsiveLabel(kSearchResult));
-
-
     // note that later widgets are drawn on top of earlier widgets
 
-    setLayout(rl);
+    QScrollArea *window = new QScrollArea();
+    window->setWidgetResizable(true);
+    QWidget *container = new QWidget();
+    container->setLayout(rl);
+    rl2->addWidget(window);
+    window->setWidget(container);
+    setLayout(rl2);
 }
 
 

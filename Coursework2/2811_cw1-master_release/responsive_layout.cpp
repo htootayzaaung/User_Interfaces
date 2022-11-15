@@ -1,9 +1,10 @@
-//
+﻿//
 // Created by twak on 07/10/2019.
 //
 
 #include "responsive_layout.h"
 #include "responsive_label.h"
+#include <QScrollArea>
 #include <iostream>
 
 //using namespace std;
@@ -12,18 +13,24 @@
 void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fit inside r */ ) {
 
     QLayout::setGeometry(r);
-    int result_count = 0;
-    int move_right = r.x() + 6;
-    int move_down = r.y() + 60;
+
+    //Initializing global-counter variables for specific widgets and their respective starting positions
+
     int count_500kSR = 0;
-    int count_1280kSR = 0;
-    int count_500kRT = 0;
     int x_500kSR = r.x() + 6;
     int y_500kSR = r.y() + 60;
+
+    int count_1280kSR = 0;
     int x_1280kSR = r.x() + 80;
     int y_1280kSR = r.y() + 76;
+
+    int count_500kRT = 0;
     int x_500kRT = r.x() + 6;
-    int y_500kRT = r.y() + 63;
+    int y_500kRT = r.y() + 146;
+
+    int count_1280kRT = 0;
+    int x_1280kRT = r.x() + 80;
+    int y_1280kRT = r.y() + 189;
 
     // for all the Widgets added in ResponsiveWindow.cpp
     for (int i = 0; i < list_.size(); i++) {
@@ -33,8 +40,14 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
         try {
             // cast the widget to one of our responsive labels
             ResponsiveLabel *label = static_cast<ResponsiveLabel *>(o->widget());
+            QScrollArea *label2 = dynamic_cast<QScrollArea *>(o->widget());
 
-            if (label == NULL) // null: cast failed on pointer
+            if (label2 != NULL)
+            {
+             label2->setGeometry(r);
+            }
+
+            else if (label == NULL) // null: cast failed on pointer
                 std::cout << "warning, unknown widget class in layout" << std::endl;
 
             /*DEFAULT*/
@@ -190,7 +203,6 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
                 {
                     label->setGeometry(r.width() - 123 + r.x(), r.height() - r.y() - 20, 40, 15);
                 }
-
             }
 
             else if (label->text() == kSearchForward)
@@ -211,67 +223,71 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
             }
 
 
+            //kSearchResult_SMALL
             else if (label->text() == kSearchResult && r.width() < 500)
             {
-                result_count = result_count + 1;
+                count_500kSR++;
 
-                if (result_count == 1)
+                if (count_500kSR == 1)
                 {
-                    label->setGeometry(r.x() + 6, r.y() + 60, (r.width() * 0.15) + 10 , (r.height() * 0.15) + 35);
+                    label->setGeometry(r.x() + 6, r.y() + 60, 90, 115);
                 }
 
-                else if (result_count > 1)
+                else if (count_500kSR > 1)
                 {
-                    move_right = move_right + r.width() * 0.15 + 20;
+                    x_500kSR = x_500kSR + 103;
 
-                    if (move_right + r.width() * 0.15 + 10 > r.width() - 70)
+                    if (x_500kSR + 160 > r.width() - 20)    //Do not change!
                     {
-                        move_down = move_down + r.height() * 0.15 + 90; //+ 20
-                        move_right = r.x() + 6;
+                        y_500kSR = y_500kSR + 159; //+90
+                        x_500kSR = r.x() + 6;
 
-                        if (move_down + r.height() * 0.15 + 10 < r.height() - 50) //-40      //play around this negative "-" value
+                        if (y_500kSR + 70 < r.height() - 74)
                         {
-                            label->setGeometry(move_right, move_down, (r.width() * 0.15) + 10, (r.height() * 0.15) + 35);
+                            label->setGeometry(x_500kSR, y_500kSR, 90, 115);
                         }
                         else
                         {
-                            label->setGeometry(move_right, move_down, 0, 0);
+                            label->setGeometry(x_500kSR, y_500kSR, 0, 0);
                         }
                     }
                     else
                     {
-                        if (move_down + r.height() * 0.15 + 10 > r.height() - 50) //-40
+                        if (y_500kSR + 70 > r.height() - 74)
                         {
-                            label->setGeometry(move_right, move_down, 0, 0);
+                            label->setGeometry(x_500kSR, y_500kSR, 0, 0);
                         }
                         else
                         {
-                            label->setGeometry(move_right, move_down, (r.width() * 0.15) + 10, (r.height() * 0.15) + 35);
+                            label->setGeometry(x_500kSR, y_500kSR, 90, 115);
                         }
                     }
                 }
             }
 
+
+            //kResultText_SMALL
             else if (label->text() == kResultText && r.width() < 500)
             {
                 count_500kRT++;
 
                 if (count_500kRT == 1)
                 {
-                    label->setGeometry(r.x() + 6, r.y() + 97 + (r.height() * 0.15), (r.width() * 0.15) + 10, 40);   //Do Not Change!
+                    label->setGeometry(x_500kSR, y_500kSR + 119, 90, 30);
                 }
+
                 else if (count_500kRT > 1)
                 {
-                    x_500kRT = x_500kRT + r.width() * 0.15 + 20;
+                    x_500kRT = x_500kRT + 103;
 
-                    if (x_500kRT + r.width() * 0.15 + 10 > r.width() - 70) //-70
+                    if (x_500kRT + 160 > r.width() - 20)    //Do not change!
                     {
-                        y_500kRT = y_500kRT + r.height() * 0.15 + 90;
+                        y_500kRT = y_500kRT + 159;
                         x_500kRT = r.x() + 6;
 
-                        if (y_500kRT + r.height() * 0.15 + 10 < r.height() - 50)
+                        if (y_500kRT + 60 < r.height() - 10)
                         {
-                            label->setGeometry(x_500kRT, y_500kRT, (r.width() * 0.15) + 10, 40);
+                            label->setGeometry(x_500kRT, y_500kRT + 33, 90, 30);
                         }
                         else
                         {
@@ -280,13 +296,13 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
                     }
                     else
                     {
-                        if (y_500kRT + r.height() * 0.15 + 10 > r.height() - 50)
+                        if (y_500kRT + 60 > r.height() - 10)
                         {
                             label->setGeometry(x_500kRT, y_500kRT, 0, 0);
                         }
                         else
                         {
-                            label->setGeometry(x_500kRT, y_500kRT, (r.width() * 0.15) + 10, 40);
+                            label->setGeometry(x_500kRT, y_500kRT + 33, 90, 30);
                         }
                     }
                 }
@@ -294,54 +310,89 @@ void ResponsiveLayout::setGeometry(const QRect &r /* our layout should always fi
 
 
 
+            //kSearchResult_MEDIUM_TO_LARGE
             else if (label->text() == kSearchResult && r.width() >= 500)
             {
                 count_1280kSR++;
 
                 if (count_1280kSR == 1)
                 {
-                    label->setGeometry(r.x() + 80, r.y() + 76, (r.width() * 0.15) + 10 , (r.height() * 0.15) + 35);     //sets the first result //Do not change!
+                    label->setGeometry(r.x() + 80, r.y() + 76, 110 , 135);
                 }
 
                 else if (count_1280kSR > 1)
                 {
-                    x_1280kSR = x_1280kSR + r.width() * 0.15 + 20;          //moves 10 position to the right //Do not change!
+                    x_1280kSR = x_1280kSR + 124;
 
-                    if (x_1280kSR + r.width() * 0.15 + 10 > r.width() - 132)  //-120
+                    if (x_1280kSR + 163 > r.width() - 80)  //Do not change!
                     {
-                        x_1280kSR = 0;
-                        y_1280kSR = y_1280kSR + r.height() * 0.15 + 108; //+90 Do Not change!
-                        x_1280kSR = x_1280kSR + r.x() + 80;   //+80 Do not change
+                        y_1280kSR = y_1280kSR + 190;
+                        x_1280kSR = r.x() + 80;
 
-                        //if (move_down + r.height() * 0.15 + 10 < r.height() + 110) //-40      //play around this negative "-" value
-                        //{
-                            label->setGeometry(x_1280kSR, y_1280kSR, (r.width() * 0.15) + 10, (r.height() * 0.15) + 35);
-                        //}
-                        //else
-                        //{
-                            //label->setGeometry(move_right2, move_down2, 0, 0);
-                        //}
-                        //CHECK IF YOU NEED TO VERIFY THE HEIGHT IF WE ARE USING QScrollArea
-                        if (y_1280kSR > r.height() - 20)
+                        if (y_1280kSR + r.height() * 0.15 + 10 < r.height() - 113)
+                        {
+                            label->setGeometry(x_1280kSR, y_1280kSR, 110, 135);
+                        }
+                        else
                         {
                             label->setGeometry(x_1280kSR, y_1280kSR, 0, 0);
                         }
                     }
-                    else if (x_1280kSR + r.width() * 0.15 + 10 < r.width() - 132) //-120
+                    else
                     {
-                        x_1280kSR = x_1280kSR + r.x() + 6;
-
-                        //if (move_down2 + r.height() * 0.15 + 10 > r.height() - 110) //-40
-                        //{
-                            //label->setGeometry(move_right2, move_down2, 0, 0);
-                        //}
-                        //else
-                        //{
-                            label->setGeometry(x_1280kSR, y_1280kSR, (r.width() * 0.15) + 10, (r.height() * 0.15) + 35);
-                        //}
+                        if (y_1280kSR + r.height() * 0.15 + 10 > r.height() - 113)
+                        {
+                            label->setGeometry(x_1280kSR, y_1280kSR, 0, 0);
+                        }
+                        else
+                        {
+                            label->setGeometry(x_1280kSR, y_1280kSR, 110, 135);
+                        }
                     }
                 }
             }
+
+            //kResultText_MEDIUM_TO_LARGE
+            else if (label->text() == kResultText && r.width() >= 500)
+            {
+                count_1280kRT++;
+
+                if (count_1280kRT == 1)
+                {
+                    label->setGeometry(r.x() + 80, r.y() + 215, 110, 35);
+                }
+                else if (count_1280kRT > 1)
+                {
+                    x_1280kRT = x_1280kRT + 124;
+
+                    if (x_1280kRT + 163 > r.width() - 80)   //Do not change!
+                    {
+                        y_1280kRT = y_1280kRT + 190;
+                        x_1280kRT = r.x() + 80;
+
+                        if (y_1280kRT + r.height() * 0.15 + 10 < r.height())    //Do not change!
+                        {
+                            label->setGeometry(x_1280kRT, y_1280kRT + 25, 110,  35);
+                        }
+                        else
+                        {
+                            label->setGeometry(x_1280kRT, y_1280kRT, 0, 0);
+                        }
+                    }
+                    else
+                    {
+                        if (y_1280kRT + r.height() * 0.15 + 10 > r.height())      //Do not change!
+                        {
+                            label->setGeometry(x_1280kRT, y_1280kRT, 0, 0);
+                        }
+                        else
+                        {
+                            label->setGeometry(x_1280kRT, y_1280kRT + 25, 110,  35);
+                        }
+                    }
+                }
+            }
+
 
             else // otherwise: disappear label by moving out of bounds
                 label->setGeometry(-1, -1, 0, 0);
