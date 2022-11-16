@@ -40,8 +40,7 @@ void ResponsiveWindow::createWidgets() {
     rl->addWidget(new ResponsiveLabel(kLanguage));
     rl->addWidget(new ResponsiveLabel(kMenu));
 
-    // we might have more than one search results
-    rl->addWidget(new ResponsiveLabel(kResultText));
+
     rl->addWidget(new ResponsiveLabel(kResultText));
     rl->addWidget(new ResponsiveLabel(kResultText));
     rl->addWidget(new ResponsiveLabel(kResultText));
@@ -60,6 +59,7 @@ void ResponsiveWindow::createWidgets() {
     rl->addWidget(new ResponsiveLabel(kResultText));
     rl->addWidget(new ResponsiveLabel(kResultText));
 
+
     rl->addWidget(new ResponsiveLabel(kSearchResult));
     rl->addWidget(new ResponsiveLabel(kSearchResult));
     rl->addWidget(new ResponsiveLabel(kSearchResult));
@@ -77,7 +77,7 @@ void ResponsiveWindow::createWidgets() {
     rl->addWidget(new ResponsiveLabel(kSearchResult));
     rl->addWidget(new ResponsiveLabel(kSearchResult));
     rl->addWidget(new ResponsiveLabel(kSearchResult));
-    rl->addWidget(new ResponsiveLabel(kSearchResult));
+
     // note that later widgets are drawn on top of earlier widgets
 
     QScrollArea *window = new QScrollArea();
@@ -85,6 +85,7 @@ void ResponsiveWindow::createWidgets() {
     QWidget *container = new QWidget();
     container->setLayout(rl);
     rl2->addWidget(window);
+    container->setMinimumHeight(1500);  //2100
     window->setWidget(container);
     setLayout(rl2);
 }
