@@ -85,7 +85,7 @@ void ResponsiveWindow::createWidgets() {
     QWidget *container = new QWidget();
     container->setLayout(rl);
     rl2->addWidget(window);
-    container->setMinimumHeight(1500);  //2100
+    container->setMinimumHeight(1500);
     window->setWidget(container);
     setLayout(rl2);
 }

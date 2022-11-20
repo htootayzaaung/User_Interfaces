@@ -26,7 +26,7 @@ const QString
         kSearchText     = "search query",
         kSearchForward  = ">",
         kSearchBackward = "<",
-        kSearchOptions  = "search\noptions",
+        kSearchOptions  = "search options",
         kWishlist       = "wish-list",
         kLanguage       = "language",
         kRegion         = "region",
